@@ -9,13 +9,13 @@ interface ModalEditFoodProps {
   isOpen: boolean;
   setIsOpen: () => void;
   editingFood: {};
-  handleUpdateFood: (data: EditFood) => void;
+  handleUpdateFood: (data: EditFood) => Promise<void>;
 }
 interface EditFood {
-  image: string;
   name: string;
-  price: string;
   description: string;
+  price: string;
+  image: string;
 }
 
 export function ModalEditFood({
@@ -30,6 +30,8 @@ export function ModalEditFood({
     handleUpdateFood(data);
     setIsOpen();
   };
+
+  console.log(editingFood);
 
   return (
     <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
